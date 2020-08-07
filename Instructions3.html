@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'risk/css/custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Choosing Between A Sure and a Risky Amount: Instructions 3/3" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+ <font color="red" >  <b> After you have made your choices, the computer is programmed to randomly select a number between 1 and 10, to
+     identify which 1 of the 20 choices will determine the payment to you. </b></font> If in that choice question
+you had decided to take the money for sure, that is the amount of money you will get at the end of this study.
+If you had decided to flip the coin, the computer will then flip the coin. If it comes up heads,
+you will win 500 KSH. If it comes up tails, you will not win anything. However, this outcome will be revealed
+to you once you have answered all questions for this study.
+
+Are there any questions?
+ </div>
+</div>
+
+
+
+    </div>
+
+    {% next_button %}
+{% endblock %}

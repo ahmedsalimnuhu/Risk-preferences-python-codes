@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'risk/css/custom.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ***************************************************************************************************************** #}
+{% block content %}
+                {% if option_to_pay == "A" and payoff == 0 %}
+                {% blocktrans trimmed with payoff=payoff %}
+                 Example:   Your coin came up tails and your number of candies has been recorded.
+<p></p>
+<b><font color="red" >  Please note that this is only an EXAMPLE so you won't receive actual candies </font> </b>
+<p></p>  Now the example is over: Please click next to make your actual choices.
+
+<!--so your payoff in this task equals <b>{{ payoff }}</b>.-->
+                {% endblocktrans %}
+                {% elif option_to_pay == "A" and payoff != 0  %}
+
+                {% blocktrans trimmed with payoff=payoff %}
+                    Your coin came up heads  and your number of candies has been recorded. <!--so your payoff in this task equals <b>{{ payoff }}</b>. -->
+              <p></p>  <b><font color="red" >  Please note that this is only an EXAMPLE so you won't receive actual candies </font> </b>
+
+<p></p>  Now the example is over: Please click next to make your actual choices.
+
+{% endblocktrans %}
+
+                {% endif %}
+<p></p>
+          {% if option_to_pay != "A" %}
+                Now the example is over: Please click next to make your actual choices.
+                {% endif %}
+ {% next_button %}
+
+{% endblock %}

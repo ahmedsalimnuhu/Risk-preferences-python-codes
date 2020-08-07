@@ -1,0 +1,229 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'risk/css/custom.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Results" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+
+    <div class="wrapper">
+
+        <div class="card info">
+            {% blocktrans trimmed %}
+ <font color="green" >  <b>
+     The computer has randomly selected, for your payment, one of the 10 choices  you made in the previous page </b></font>
+            {% endblocktrans %}
+        </div>
+
+
+     <!--   ------------------------------------------------------------------------------------------------------- -->
+        <!-- Table - Lottery Decisions (Accept/Reject) -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+      <!--  {% if Constants.accept_reject == True and Constants.variation != 'sure_payoff' %}
+
+            <div class="card">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="header">
+                            <th class="lottery_left">{% trans "Lottery" %}</th>
+                            <th class="formfield">{% trans "Accept" %}</th>
+                            <th class="formfield">{% trans "Reject" %}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i,f,p,hi,lo,sp in choice_to_pay %}
+                            <tr>
+                                 lotteries
+                                <td class="lottery_left">
+                                    {{ hi }} {% trans "if head" %},
+                                    {{ lo }} {% trans "if tails" %}
+                                </td>
+
+                                 accept
+                                <td class="formfield">
+                                    {% if option_to_pay == 'A' %}
+                                        <div class="controls">
+                                            <input type="radio" style="pointer-events: none;" checked="checked">
+                                        </div>
+                                    {% elif option_to_pay == 'B' %}
+                                        <div class="controls">
+                                            <input type="radio" style="pointer-events: none;">
+                                        </div>
+                                    {% endif %}
+                                </td>
+
+                                 reject
+                                <td class="formfield">
+                                    {% if option_to_pay == 'A' %}
+                                        <div class="controls">
+                                            <input type="radio" style="pointer-events: none;">
+                                        </div>
+                                    {% elif option_to_pay == 'B' %}
+                                        <div class="controls">
+                                            <input type="radio" style="pointer-events: none;" checked="checked">
+                                        </div>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        -->
+
+        <!-- -------------------------------------------------------------------------------------------------------
+        <!-- Table - Lottery Decisions (Option A/B) -->
+        <!-- -------------------------------------------------------------------------------------------------------
+        {% else %}
+
+            <div class="card">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="header">
+                            <th class="lottery">{% trans "Option A" %}</th>
+                            <th class="formfield"></th>
+                            <th class="sure_payoff">{% trans "Option B" %}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i,f,p,hi,lo,sp in choice_to_pay %}
+                            <tr>
+                                lotteries
+                                <td class="lottery">
+                                    {{ hi }} {% trans "KSH if heads" %},
+                                    {{ lo }} {% trans " if tails" %}
+                                </td>
+
+                                radio select form fields
+                                <td class="formfield">
+                                    {% if option_to_pay == 'A' %}
+                                        <div class="controls">
+                                            <input type="radio" style="pointer-events: none;" checked="checked">
+                                            <input type="radio" style="pointer-events: none;">
+                                        </div>
+                                    {% elif option_to_pay == 'B' %}
+                                        <div class="controls">
+                                            <input type="radio" style="pointer-events: none;">
+                                            <input type="radio" style="pointer-events: none;" checked="checked">
+                                        </div>
+                                    {% endif %}
+                                </td>
+
+                                sure payoff
+                                <td class="sure_payoff">
+                                    {{ sp }} {% trans "KSH for sure" %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% endif %}
+        <br/>
+
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <!-- Payoff Information -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <div class="card info">
+
+            {% if Constants.accept_reject == True and Constants.variation != 'sure_payoff' %}
+                <p>
+                    {% blocktrans trimmed with accept_reject=accept_reject %}
+                        As indicated above, you decided to {{ accept_reject }} this lottery.
+                    {% endblocktrans %}
+                </p>
+            {% else %}
+                <p>
+                    {% blocktrans trimmed with option_to_pay=option_to_pay %}
+                    In the choice row selected by the computer for your payment, you opted for  <u><b> option {{ option_to_pay }}. </b> </u>
+
+                    {% endblocktrans %}
+                </p>
+            {% endif %}
+
+
+            {% if option_to_pay == "B" %}
+                <p>
+                    {% blocktrans trimmed %}
+          <font color="red" >
+                    Since in this choice row, you had selected option {{option_to_pay}} which is still a lottery, you will need <u> to flip a coin
+                    to determine the amount of candies you will receive. But note that this is just an example so you won't
+                receive actual candies.
+                 </u> </font>
+                    {% endblocktrans %}
+                    <p></p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Click to flip coin
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Coin flip</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> Do you want to flip the coin now?
+	<tr>
+	<td  id=“lane”></td></p>
+	</tr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        <button class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+ <script src="{% static "COP_Experiment/Basic.js" %}"></script>
+
+
+                </p>
+            {% else %}
+  <font color="red" >     <b>        <p>  Since option A is always a sure amount, you will receive this sure payoff at the
+            end of the study. </b> </font>
+
+                <!--<b>{{ payoff }}.</b> -->
+  <b> <font color="red"> Please wait here for the permission of the instructor before
+             you continue. </font>
+  Once the instructor has given you the permission, you may  click <B>NEXT to continue</B>
+
+<center>
+{% next_button %} </center>
+    </div>
+
+</div>
+{% endif %}
+{% endblock %}

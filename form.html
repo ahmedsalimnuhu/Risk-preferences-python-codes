@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Welcome to Part I: Decisions Involving Money
+{% endblock %}
+
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+
+<b>Welcome to part I. Before we begin, we would like to ask you a few questions about yourself.
+  So please respond to following questions. Once you have completed, please click ‘Next” and
+  wait for further instructions.   </b> <p></p>
+
+        {% formfields %}
+
+
+
+</div>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Next
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Please confirm your submission </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> Do you wish to submit the information provided?
+	<tr>
+	<td  id=“lane”></td></p>
+	</tr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        <button class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+ <script src="{% static "COP_Experiment/Basic.js" %}"></script>
+
+{% endblock %}

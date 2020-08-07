@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Part I: Choosing Between A Sure Amount and a Lottery: Real Money (1 of 2)
+{% endblock %}
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <p> <h5> RULES: </h5> </p>
+   <p></p>
+        <b> You will be asked a number of repeated choices to make. Specifically {{n}} choices. </b>
+        <p></p>
+        <b> You will only have the chance of being paid for one of the choices you make in this exercise. </b>
+    However, you do not know yet which choice set it will be, so you must think about
+    each choice of Option A and Option B very carefully. <p></p>
+
+You will only find out at the end of Part III for which of these questions you
+        are going to have the chance of being paid. So, it is in your interest to treat
+        each of the {{n}} choice sets to be presented as if that is the question
+        for which you are going to have the chance of being paid.
+
+   </div>
+</div>
+
+<center>
+{% next_button %}
+</center>
+
+
+{% endblock %}

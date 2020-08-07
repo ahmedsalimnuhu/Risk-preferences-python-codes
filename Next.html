@@ -1,0 +1,31 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <h3><font color ="black"> Please wait here for the permission of the instructor before you continue </font></h3>
+
+
+
+    </div>
+</div>
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+<b> <font color="red"> Please wait here for the permission of the instructor before
+    you continue. </font>
+  Once the instructor has given you the permission, you may  click <B>NEXT to continue</B>
+
+    </div>
+</div>
+
+{% next_button %}
+
+{% endblock %}

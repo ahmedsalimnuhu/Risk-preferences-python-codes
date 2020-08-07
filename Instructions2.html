@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}
+Part I: Choosing Between A Sure Amount and a Lottery: Real Money (2 of 2)
+{% endblock %}
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <p> <h5> RULES (continued): </h5> </p>
+   <p></p>
+        <ul>
+            <li> As in the example of candies, the questions deal with whether you prefer to have a smaller
+                amount of money for sure OR a larger amount of money where there is some risk that you end up
+                not getting anything. You can never lose any money irrespective of what you choose. <p></p>
+                For example, consider the following two options:
+
+                <ul> <b>
+                    <li>Option A: You get 200 KSH for sure.</li>
+                    <li>Option B: We will flip a coin. If it lands on heads you get 500 KSH.
+                        If it lands on tails you get nothing. </li>
+                </ul> </b> <p></p>
+            <li> <b> If you choose Option A,</b> you know you get 200 KSH for sure. <b>
+            If you choose Option B, </b>
+            where we flip a coin, you might get 500 KSH, but there is also the
+            same exact chance you will get nothing. That is you will get 0.  <p></p> <font color="blue">
+            <li> We will show you {{n}} questions like these but with different amounts of money.
+            These differences are important. </li> <p></p>
+            <li> Remember, the best you can do is to think carefully about each question
+                as if it were the only choice you make. </li> </font>
+   </ul>
+     <font color="red"> <b>  Please wait here for the permission of the instructor before you continue
+    Once the instructor has given you the permission, you may click next to make actual decisions involving money.
+     </b> </font>
+   </div>
+</div>
+
+<center> {% next_button %} </center>
+
+{% endblock %}

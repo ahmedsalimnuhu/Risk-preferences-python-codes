@@ -1,0 +1,56 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'risk/css/custom.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ***************************************************************************************************************** #}
+{% block content %}
+                {% if option_to_pay == "B" and payoff == 0 %}
+                {% blocktrans trimmed with payoff=payoff %}
+                    Your coin came up tails and your payment has been recorded.
+<p></p>
+
+<b> <font color="red"> Please wait here for the permission of the instructor before
+             you continue.
+  Once the instructor has given you the permission, you may  click <B>NEXT to continue</B>
+
+<!--so your payoff in this task equals <b>{{ payoff }}</b>.-->
+                {% endblocktrans %}
+                {% elif option_to_pay == "B" and payoff != 0  %}
+
+                {% blocktrans trimmed with payoff=payoff %}
+                    Your coin came up heads  and your payment has been recorded. <!--so your payoff in this task equals <b>{{ payoff }}</b>. -->
+           <p></p>    <b> <font color="red"> Please wait here for the permission of the instructor before
+        you continue. </font>
+  Once the instructor has given you the permission, you may  click <B>NEXT to continue</B>
+
+
+                {% endblocktrans %}
+
+                {% endif %}
+
+                {% if option_to_pay != "B" %}
+                 Please click next to continue
+                {% endif %}
+
+ <center>
+{% next_button %}
+ </center>
+{% endblock %}
